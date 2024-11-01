@@ -13,8 +13,8 @@ dotenv.config();
 app.use(express.json());
 app.use(cors(
   {
-    origins: "https://talkative-iota.vercel.app",
-    credentials: true,
+    origin: "*",
+    methods: "GET,PUT,POST,DELETE"
   }
 ));
 
