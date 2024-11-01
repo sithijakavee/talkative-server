@@ -11,12 +11,7 @@ const app = express();
 dotenv.config();
 
 app.use(express.json());
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-})
+app.use(cors());
 
 const stripeConfig = new stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -29,7 +24,7 @@ mongoose
   .catch((error) => console.error("MongoDB connection error:", error));
 
 app.get("/", (req, res) => {
-  res.send("Hello World!");
+  res.send("Hiiiiii");
 });
 
 app.use("/api/auth", authRouter);
