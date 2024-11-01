@@ -11,7 +11,12 @@ const app = express();
 dotenv.config();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+  {
+    origins: "https://talkative-iota.vercel.app",
+    credentials: true,
+  }
+));
 
 const stripeConfig = new stripe(process.env.STRIPE_SECRET_KEY);
 
