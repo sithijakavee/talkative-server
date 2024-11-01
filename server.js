@@ -11,12 +11,7 @@ const app = express();
 dotenv.config();
 
 app.use(express.json());
-app.use(cors(
-  {
-    origin: "https://www.google.com",
-    credentials: true,
-  }
-));
+app.use(cors());
 
 const stripeConfig = new stripe(process.env.STRIPE_SECRET_KEY);
 
