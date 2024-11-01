@@ -11,12 +11,12 @@ const app = express();
 dotenv.config();
 
 app.use(express.json());
-app.use(cors(
-  {
-    origin: "*",
-    methods: "GET,PUT,POST,DELETE"
-  }
-));
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  next();
+})
 
 const stripeConfig = new stripe(process.env.STRIPE_SECRET_KEY);
 
